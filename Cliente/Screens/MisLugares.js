@@ -54,7 +54,9 @@ const MisLugares=()=>{
                 />
                 </MapView>
             </View>
-            
+            <View style={styles.list}>
+                <Text style={{marginTop:10,fontSize:18,fontWeight:'bold'}}>Guardadas</Text>
+            </View>
         </View>
     );    
 }
@@ -80,6 +82,11 @@ const styles=StyleSheet.create({
     map:{
         width,
         height:350,        
+    },
+    list:{
+        width:320,     
+        height,   
+        
     },
 })
 
