@@ -1,23 +1,26 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Auth from "./components/Auth";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './Screens/Home';
+import RegistroScreen from './Screens/Registro';
+import MercadoPagoScreen from './Screens/Details';
+import { Provider } from 'react-redux';
+import { store } from './store'; // Importa tu tienda Redux desde el archivo store.js en la raíz de la carpeta
+import Details from './Screens/Details';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Google Sign</Text>
-      <Auth/>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Registro" component={RegistroScreen} />
+          <Stack.Screen name="MercadoPago" component={Details} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
