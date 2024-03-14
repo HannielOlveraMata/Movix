@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, StatusBar, Button,TouchableOpacity,Image,Dimensions} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, Button,TouchableOpacity,Image,Dimensions,SafeAreaView,FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as React from 'react';
 import MapView, {Marker,Polyline} from 'react-native-maps';
@@ -15,6 +15,38 @@ const MisLugares=()=>{
         latitude:20.589386,
         longitude:-100.410147,
     });
+
+    const DATA = [
+        {
+          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+          casa: 'Casa',
+          direction:'Av de la cosas de marfil colonia costureras #12',          
+        },
+        {
+            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28',
+            casa: 'Casa',
+            direction:'Av de la cosas de marfil colonia costureras #12',          
+          },
+          {
+            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb11',
+            casa: 'Casa',
+            direction:'Av de la cosas de marfil colonia costureras #12',          
+          },
+      ];
+    
+      const Item = ({casa,direction}) => (
+        <View style={styles.item}>
+            <View style={{width:'20%',height:60,justifyContent:'center',alignItems:'center'}}>
+                <TouchableOpacity>
+                    <Icon name="settings-outline" size={30}></Icon>
+                </TouchableOpacity>
+            </View>
+            <View style={{width,height:60}}>
+                <Text style={{fontWeight:'bold',fontSize:13}}>{casa}</Text>
+                <Text style={styles.direction}>{direction}</Text>                                
+            </View>
+        </View>
+      );
     return(
         <View style={styles.container}>
             <View style={styles.title}>
@@ -55,7 +87,17 @@ const MisLugares=()=>{
                 </MapView>
             </View>
             <View style={styles.list}>
-                <Text style={{marginTop:10,fontSize:18,fontWeight:'bold'}}>Guardadas</Text>
+                <Text style={{marginTop:10,fontSize:18,fontWeight:'bold',marginVertical:10}}>Guardadas</Text>
+                <SafeAreaView style={styles.container}>
+                    <FlatList
+                        data={DATA}
+                        renderItem={({item}) => <Item casa={item.casa} direction={item.direction}/>}
+                        keyExtractor={item => item.id}
+                    />
+                </SafeAreaView>
+            </View>
+            <View>
+                <Button title='CLICK'></Button>
             </View>
         </View>
     );    
@@ -65,7 +107,8 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         justifyContent:'flex-start',
-        alignItems:'center',                        
+        alignItems:'center',    
+        backgroundColor:'#EBECF4',                    
     },
     title:{
         backgroundColor:'#2447E5',        
@@ -77,16 +120,24 @@ const styles=StyleSheet.create({
     },
     body:{        
         width,   
-        height:350,
+        height:350,                
     },
     map:{
         width,
         height:350,        
     },
     list:{
-        width:320,     
-        height,   
-        
+        width:330,     
+        height,            
+    },
+    item:{
+        flexDirection:'row',
+        borderRadius:10, 
+        borderWidth:1,
+        borderColor:'#C3CAC1',                      
+        width:320,
+        backgroundColor:'white',  
+        marginVertical:4,                      
     },
 })
 
