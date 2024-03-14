@@ -4,7 +4,7 @@ import * as Google from 'expo-auth-session/providers/google';
 
 export default function GoogleSignInButton() {
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: 'TU_CLIENT_ID.apps.googleusercontent.com',
+    clientId: '1096205509177-gv3k496048o9t3r48s3qpujts07rdllf.apps.googleusercontent.com',
   });
 
   React.useEffect(() => {

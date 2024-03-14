@@ -22,7 +22,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "AppMovix.thor.expotest"
+      "package": "AppMovix.thor.expotest",
+      "scheme": "movixapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
